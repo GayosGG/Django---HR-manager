@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-danger me-2">Выйти</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<h1 class="container-fluid col-4">Вакансии</h1>
+
+<div class="row">
+    <div class="container-fluid col-4">
+
+        <select class="form-select col-sm-4">
+            <option selected>Сортировка по..</option>
+            <option value="1">Компания</option>
+            <option value="2">Должность</option>
+            <option value="3">Приоритет</option>
+            <option value="3">Приоритет</option>
+            <option value="3">Приоритет</option>
+            <option value="3">Приоритет</option>
+        </select>
+
+
+
+
+        <div>Отображаеммы колонки:</div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">Архив</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2">
+            <label class="form-check-label" for="inlineCheckbox3">Файл</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option2">
+            <label class="form-check-label" for="inlineCheckbox4">Файл</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option2">
+            <label class="form-check-label" for="inlineCheckbox5">Файл</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option2">
+            <label class="form-check-label" for="inlineCheckbox6">Файл</label>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="container-fluid col-10">
+    <table class="table" id="vacancys">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Компания</th>
+            <th scope="col">Должность</th>
+            <th scope="col">Описание</th>
+            <th scope="col">email</th>
+            <th scope="col">номер</th>
+            <th scope="col">приоритет</th>
+            <th scope="col">ответсвенный</th>
+            <th scope="col">файл</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for v in vacancys%}
+        {% if v.show %}
+        <tr>
+            <td>{{v.pk}}</td>
+            <td>{{v.company}}</td>
+            <td>{{v.post}}</td>
+            <td>{{v.decripton}}</td>
+            <td>{{v.e_mail}}</td>
+            <td>{{v.phone_number}}</td>
+            <td>{{v.get_priority_display}}</td>
+            <td>{{v.hr_manager}}</td>
+            <td>{{v.file}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>
