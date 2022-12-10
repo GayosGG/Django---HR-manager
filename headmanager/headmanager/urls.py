@@ -16,19 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
+from django.contrib.auth import views as auth_views
 
-from hrmanager import views
-from hrmanager.views import VacancyViewSet
+from hrmanager.views import VacancyViewSet, index, login_test, CandidateViewSet
 
 router = SimpleRouter()
 router.register('api/vacancys', VacancyViewSet)
+router.register('api/candidats', CandidateViewSet)
 
 urlpatterns = [
-    path('', include('hrmanager.urls')),
+    path('', index),
     path('admin/', admin.site.urls),
-    path('api/vacancys/delete/<int:vacancy_id>', views.delete_vacancy),
-    path('api/', include('hrmanager.urls'))
-
+    path('ll/', login_test),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
+    path('api/', include('hrmanager.urls')),
+    path('api/drf-auth/', include('rest_framework.urls'))
 ]
 
 urlpatterns += router.urls

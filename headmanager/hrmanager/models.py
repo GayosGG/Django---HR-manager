@@ -22,7 +22,7 @@ class Vacancy(models.Model):
     status = models.CharField(max_length=255, choices=STATUS_CHOICES, verbose_name='Статус')
     priority = models.CharField(max_length=255, choices=PRIORITY_CHOICES, verbose_name='Приоритет')
     hr_manager = models.CharField(max_length=255, verbose_name='Ответственный HR')
-    file = models.FileField(upload_to="vacancys_files/$Y/%m/$d/", verbose_name='Файл', null=True, blank=True) #TODO
+    file = models.FileField(upload_to="vacancys_files/$Y/%m/$d/", verbose_name='Файл', null=True, blank=True)
     show = models.BooleanField(default=True)
     time_creat = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
@@ -55,7 +55,6 @@ class Candidate(models.Model):
     phone_number = models.CharField(max_length=255, verbose_name='номер телефона')
     status = models.CharField(max_length=255, choices=STATUS_CHOICES, verbose_name='Статус')
     hr_manager = models.CharField(max_length=255, verbose_name='Ответсвенный HR')
-    file = models.FileField(upload_to="candidates_files/$Y/%m/$d/", verbose_name='Файл резюме') #TODO
     in_archive = models.BooleanField(default=False)
     time_creat = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
